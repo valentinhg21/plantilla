@@ -1,0 +1,48 @@
+
+$url_font: '../webfonts/';
+
+// FUNCION PARA REGISTRAR LAS FUENTES
+@mixin register-font($name:"Arial", $weight: 400, $woff2, $woff){
+    @if $name != ""{
+        @font-face {
+            font-family: $name;
+            font-display: swap;
+            src:  
+                url("#{$url_font}#{$woff2}") format('woff2'),
+                url("#{$url_font}#{$woff}") format('woff');
+            font-weight: $weight;
+            font-style: normal;
+        }
+    }
+}
+
+
+// FUNCION PARA REGISTRAR EL BACKGROUND
+@mixin bg-image-webp($folder:"", $image_webp:"", $image_jpg:""){
+    $img_1 : '';
+    $img_2 : '';
+    @if $image_webp != "" {
+        $img_1 :  "#{$url_image}#{$folder}/#{$image_webp}";
+    }
+    @if $image_jpg  != "" {
+        $img_2 : "#{$url_image}#{$folder}/#{$image_jpg}";
+    }
+    @if $folder != "" {
+        background-image:
+        url("#{$img_1}"), 
+        url("#{$img_2}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }@else{
+        background-image:
+        url("#{$img_1}"), 
+        url("#{$img_2}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+}
+
+
+
+

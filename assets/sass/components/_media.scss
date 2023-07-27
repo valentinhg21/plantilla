@@ -1,0 +1,62 @@
+$xs: 375.5px;
+$sm: 600.5px;
+$md: 1024.5px;
+$lg: 1240.5px;
+$xl: 1366.5px;
+$xxl: 1500.5px;
+
+$map-grid-props: (
+  "": 0,
+  "-sm": $sm,
+  "-md": $md,
+  "-lg": $lg,
+  "-xl": $xl,
+  "-xxl": $xxl
+);
+
+$beakpoints: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xxl: $xxl,          
+);
+
+
+
+
+
+
+@mixin media($breakpoint) {
+  @media screen and (max-width: map-get($beakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+
+@mixin media-custom($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+
+
+@mixin media-down($breakpoint) {
+  @media screen and (min-width: map-get($beakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin media-down-custom($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-height-custom($breakpoint, $breakpoint2) {
+  @media screen and ( min-width: $breakpoint ) and ( max-height: $breakpoint2 ){
+    @content;
+  }
+}

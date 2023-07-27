@@ -1,0 +1,80 @@
+
+$grid__cols: 12;
+
+
+
+    .container{
+      max-width: 1232px;
+      width: 100%;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+
+      @include media(sm){
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    
+    }
+    
+    .container-fluid {
+      max-width: 1450px;
+      width: 100%;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      @include media(sm){
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    .row{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-wrap: wrap
+    }
+    
+    .w-100{
+      width: 100%;
+    }
+    
+    
+    
+    @mixin create-mq($breakpoint) {
+      @if ($breakpoint == 0) {
+        @content;
+      } @else {
+        @media screen and (min-width: $breakpoint) {
+          @content;
+        }
+      }
+    }
+    
+    @mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+      @include create-mq($breakpoint) {
+        @for $i from 1 through $grid-cols {
+          .col#{$modifier}-#{$i} {
+            flex-basis: calc(100 / ($grid-cols / $i)) * 1%;
+            width: calc(100 / ($grid-cols / $i)) * 1%;
+          }
+        }
+      }
+    }
+    
+    @each $modifier , $breakpoint in $map-grid-props {
+        @include create-col-classes($modifier, $grid__cols, $breakpoint);
+    }
+
+
+
+
+
+
+
+
+
+
+
