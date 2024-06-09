@@ -1,40 +1,76 @@
 
-$grid__cols: 12;
-
+$grid-columns: 12;
+$grid-gutter:1.5em;
 
 
     .container{
-      max-width: 1232px;
+      max-width: 1270px;
       width: 100%;
       margin: 0 auto;
       padding-left: 2rem;
       padding-right: 2rem;
+      @include media(sm){
+        width: 100%;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+      &.container-sm-8{
+        @include media(sm){
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+      &.p-small{
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+      }
+    }
+
+
+    .container-md{
+      max-width: 1024px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      @include media(sm){
+        max-width: 100%;
+      }
+      @include media(sm){
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    .container-sm{
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      @include media(xs){
+          max-width: 100%;
+      }
+      @include media(sm){
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    .container-fluid {
+
+      width: 100%;
+      margin: 0 auto;
 
       @include media(sm){
         width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    
-    }
-    
-    .container-fluid {
-      max-width: 1450px;
-      width: 100%;
-      margin: 0 auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      @include media(sm){
-        width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
+
       }
     }
+
     .row{
-      display: flex;
       width: 100%;
-      height: 100%;
-      flex-wrap: wrap
+      display: grid;
+      grid-template-columns: repeat($grid-columns, 1fr);
+      gap: $grid-gutter;
     }
     
     .w-100{
@@ -55,17 +91,16 @@ $grid__cols: 12;
     
     @mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
       @include create-mq($breakpoint) {
-        @for $i from 1 through $grid-cols {
+        @for $i from 1 through $grid-columns {
           .col#{$modifier}-#{$i} {
-            flex-basis: calc(100 / ($grid-cols / $i)) * 1%;
-            width: calc(100 / ($grid-cols / $i)) * 1%;
+            grid-column: span ($i);
           }
         }
       }
     }
     
     @each $modifier , $breakpoint in $map-grid-props {
-        @include create-col-classes($modifier, $grid__cols, $breakpoint);
+        @include create-col-classes($modifier, $grid-columns, $breakpoint);
     }
 
 
