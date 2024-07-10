@@ -4,7 +4,7 @@ $grid-gutter:1.5em;
 
 
     .container{
-      max-width: 1270px;
+      max-width: 1366px;
       width: 100%;
       margin: 0 auto;
       padding-left: 2rem;
@@ -27,34 +27,7 @@ $grid-gutter:1.5em;
     }
 
 
-    .container-md{
-      max-width: 1024px;
-      margin: 0 auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      @include media(sm){
-        max-width: 100%;
-      }
-      @include media(sm){
-        width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-    .container-sm{
-      max-width: 800px;
-      margin: 0 auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      @include media(xs){
-          max-width: 100%;
-      }
-      @include media(sm){
-        width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
+   
     .container-fluid {
 
       width: 100%;
@@ -70,7 +43,7 @@ $grid-gutter:1.5em;
       width: 100%;
       display: grid;
       grid-template-columns: repeat($grid-columns, 1fr);
-      gap: $grid-gutter;
+      grid-gap: $grid-gutter;
     }
     
     .w-100{
@@ -102,14 +75,4 @@ $grid-gutter:1.5em;
     @each $modifier , $breakpoint in $map-grid-props {
         @include create-col-classes($modifier, $grid-columns, $breakpoint);
     }
-
-
-
-
-
-
-
-
-
-
 

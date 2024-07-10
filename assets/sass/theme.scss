@@ -1,19 +1,32 @@
 // Media
 @import './components/media';
-// VARIABLES
-@import './variables/variables';
-// COMPONENTS
-@import './components/colors';
-@import './components/root';
 @import './components/flexbox';
 @import './components/grid';
+@import './components/colors';
+@import './variables/variables';
+
+@import './components/root';
+
+
+
+// COMPONENTS
 @import './components/positions';
 @import './components/spacing';
 @import './components/buttons';
 @import './components/animations';
 @import './components/hamburguer';
-@import './components/swiper';
+@import './components/splide';
+@import './components/form';
 
+
+// LAYOUT
 @import './layout/header';
 @import './layout/footer';
+
+
+
+// TEMPLATES
+@import './templates/landing';
+
+
 

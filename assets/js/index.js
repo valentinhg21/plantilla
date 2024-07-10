@@ -1,13 +1,15 @@
 
+import { navbar } from './utils/header.js';
+import { select } from './utils/select.js';
+import { transition } from './utils/transition.js';
 
-
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     try {
-
+        transition();
+        navbar();
+        select();
 
     } catch (error) {
-        console.error(error);
+        console.error(error)
     }
-})
-
-
+});
